@@ -30,7 +30,7 @@ function App() {
     return (
         <div className="App">
             <h1>Food Ordering Miniapp</h1>
-            <h2>Menu</h2>
+            <h2>Menu1</h2>
             <ul>
                 {menu.map(item => (
                     <li key={item.id}>
