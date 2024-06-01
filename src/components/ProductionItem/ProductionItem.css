@@ -17,8 +17,13 @@
 
 .description {
     font-size: 0.8em;
+    color: var(--tg-theme-hint-color)
 }
 
 .add-btn {
     width: 100%;
+}
+
+.title {
+    color: var(--tg-theme-text-color)
 }
