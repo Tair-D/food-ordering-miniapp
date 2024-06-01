@@ -30,7 +30,7 @@ const ProductList = () => {
 			totalPrice: getTotalPrice(addedItems),
 			queryId,
 		};
-		fetch('http://localhost:8000/web-data', {
+		fetch('https://food-delivery-bot-8fa24de3ce48.herokuapp.com/web-data', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
