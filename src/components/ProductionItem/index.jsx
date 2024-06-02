@@ -9,7 +9,7 @@ const ProductItem = ({product, className, onAdd}) => {
 	};
 
 	const truncateDescription = (description) => {
-		return description.length > 100 ? description.substring(0, 100) + '...' : description;
+		return description.length > 30 ? description.substring(0, 30) + '...' : description;
 	};
 
 	return (
