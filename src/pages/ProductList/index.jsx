@@ -9,15 +9,57 @@ const products = [
 		title: 'Джинсы',
 		price: 5000,
 		description: 'Синего цвета, прямые,Синего цвета, прямые,Синего цвета, прямые,Синего цвета, прямые,Синего цвета, прямые',
-		image: 'src/assets/images.jpeg'
+		image: 'https://img.freepik.com/free-psd/yeast-bread-isolated-transparent-background_191095-27953.jpg'
 	},
-	{id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', image: 'src/assets/images.jpeg'},
-	{id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые', image: 'src/assets/images.jpeg'},
-	{id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая', image: 'src/assets/images.jpeg'},
-	{id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые', image: 'src/assets/images.jpeg'},
-	{id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая', image: 'src/assets/images.jpeg'},
-	{id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые', image: 'src/assets/images.jpeg'},
-	{id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', image: 'src/assets/images.jpeg'},
+	{
+		id: '2',
+		title: 'Куртка',
+		price: 12000,
+		description: 'Зеленого цвета, теплая',
+		image: 'https://img.freepik.com/free-psd/yeast-bread-isolated-transparent-background_191095-27953.jpg'
+	},
+	{
+		id: '3',
+		title: 'Джинсы 2',
+		price: 5000,
+		description: 'Синего цвета, прямые',
+		image: 'https://img.freepik.com/free-psd/yeast-bread-isolated-transparent-background_191095-27953.jpg'
+	},
+	{
+		id: '4',
+		title: 'Куртка 8',
+		price: 122,
+		description: 'Зеленого цвета, теплая',
+		image: 'https://img.freepik.com/free-psd/yeast-bread-isolated-transparent-background_191095-27953.jpg'
+	},
+	{
+		id: '5',
+		title: 'Джинсы 3',
+		price: 5000,
+		description: 'Синего цвета, прямые',
+		image: 'https://img.freepik.com/free-psd/yeast-bread-isolated-transparent-background_191095-27953.jpg'
+	},
+	{
+		id: '6',
+		title: 'Куртка 7',
+		price: 600,
+		description: 'Зеленого цвета, теплая',
+		image: 'https://img.freepik.com/free-psd/yeast-bread-isolated-transparent-background_191095-27953.jpg'
+	},
+	{
+		id: '7',
+		title: 'Джинсы 4',
+		price: 5500,
+		description: 'Синего цвета, прямые',
+		image: 'https://img.freepik.com/free-psd/yeast-bread-isolated-transparent-background_191095-27953.jpg'
+	},
+	{
+		id: '8',
+		title: 'Куртка 5',
+		price: 12000,
+		description: 'Зеленого цвета, теплая',
+		image: 'https://img.freepik.com/free-psd/yeast-bread-isolated-transparent-background_191095-27953.jpg'
+	},
 ];
 
 const getTotalPrice = (items = []) => {
