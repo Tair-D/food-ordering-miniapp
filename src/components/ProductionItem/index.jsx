@@ -1,17 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from "../Button";
 import "./ProductionItem.css";
 
-const ProductItem = ({product, className, onAdd}) => {
+const ProductItem = ({product, className, onAdd, addedItems}) => {
 	const [count, setCount] = useState(0);
 
+	useEffect(() => {
+		const addedItem = addedItems.find(item => item.id === product.id);
+		if (addedItem) {
+			setCount(1);
+		} else {
+			setCount(0);
+		}
+	}, [addedItems, product.id]);
+
 	const onAddHandler = () => {
-		setCount(count + 1);
+		setCount(1);
 		onAdd(product);
 	};
 
 	const onIncrementHandler = () => {
-		setCount(count + 1);
 		onAdd(product);
 	};
 
@@ -20,6 +28,7 @@ const ProductItem = ({product, className, onAdd}) => {
 			setCount(count - 1);
 		} else {
 			setCount(0);
+			onAdd(product);
 		}
 	};
 
@@ -35,7 +44,7 @@ const ProductItem = ({product, className, onAdd}) => {
 			<div className="title">{product.title}</div>
 			<div className="description">{truncateDescription(product.description)}</div>
 			<div className="price">
-				<span>Стоимость: <b>{product.price}</b></span>
+				<span>Стоимость: <b>{product.price} ₸</b></span>
 			</div>
 			{count === 0 ? (
 				<Button className="add-btn" onClick={onAddHandler}>
