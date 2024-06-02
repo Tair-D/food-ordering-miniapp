@@ -124,6 +124,7 @@ const ProductList = () => {
 					product={item}
 					onAdd={onAdd}
 					className={'item'}
+					addedItems={addedItems}
 				/>
 			))}
 		</div>

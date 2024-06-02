@@ -6,7 +6,7 @@ const ProductItem = ({product, className, onAdd, addedItems}) => {
 	const [count, setCount] = useState(0);
 
 	useEffect(() => {
-		const addedItem = addedItems.find(item => item.id === product.id);
+		const addedItem = addedItems?.find(item => item.id === product.id);
 		if (addedItem) {
 			setCount(1);
 		} else {
