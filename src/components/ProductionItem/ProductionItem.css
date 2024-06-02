@@ -22,7 +22,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
     border: none;
@@ -36,8 +36,11 @@
 }
 
 .add-icon {
-    margin-right: 5px;
     font-size: 1.2em;
+}
+
+.price-text {
+    margin-right: auto;
 }
 
 .title {
