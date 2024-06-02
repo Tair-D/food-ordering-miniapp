@@ -6,28 +6,47 @@
     width: 170px;
 }
 
-
 .img {
     width: 100%;
-    background: lightgray;
+    background: var(--tg-theme-bg-color);
     height: 100px;
     margin: 0 auto;
-    background: var(--tg-theme-button-color);
 }
 
 .description {
     font-size: 0.8em;
-    color: var(--tg-theme-hint-color)
+    color: var(--tg-theme-hint-color);
 }
 
 .add-btn {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-btn:hover {
+    background-color: var(--tg-theme-button-color-hover);
+}
+
+.add-icon {
+    margin-right: 5px;
+    font-size: 1.2em;
 }
 
 .title {
-    color: var(--tg-theme-text-color)
+    color: var(--tg-theme-text-color);
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 .price {
-    color: var(--tg-theme-text-color)
+    color: var(--tg-theme-text-color);
+    margin-top: 5px;
 }
