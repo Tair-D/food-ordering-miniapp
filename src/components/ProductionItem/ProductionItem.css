@@ -27,3 +27,7 @@
 .title {
     color: var(--tg-theme-text-color)
 }
+
+.price {
+    color: var(--tg-theme-text-color)
+}
