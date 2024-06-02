@@ -4,7 +4,12 @@ import {useTelegram} from "../../hooks/useTelegram";
 import ProductItem from "../../components/ProductionItem/index.jsx";
 
 const products = [
-	{id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
+	{
+		id: '1',
+		title: 'Джинсы',
+		price: 5000,
+		description: 'Синего цвета, прямые,Синего цвета, прямые,Синего цвета, прямые,Синего цвета, прямые,Синего цвета, прямые'
+	},
 	{id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая'},
 	{id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые'},
 	{id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая'},
