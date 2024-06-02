@@ -9,15 +9,15 @@ const products = [
 		title: 'Джинсы',
 		price: 5000,
 		description: 'Синего цвета, прямые,Синего цвета, прямые,Синего цвета, прямые,Синего цвета, прямые,Синего цвета, прямые',
-		image: 'src/assets/bread.webp'
+		image: 'src/assets/images.jpeg'
 	},
-	{id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', image: 'src/assets/bread.webp'},
-	{id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые', image: 'src/assets/bread.webp'},
-	{id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая', image: 'src/assets/bread.webp'},
-	{id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые', image: 'src/assets/bread.webp'},
-	{id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая', image: 'src/assets/bread.webp'},
-	{id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые', image: 'src/assets/bread.webp'},
-	{id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', image: 'src/assets/bread.webp'},
+	{id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая', image: 'src/assets/images.jpeg'},
+	{id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые', image: 'src/assets/images.jpeg'},
+	{id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая', image: 'src/assets/images.jpeg'},
+	{id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые', image: 'src/assets/images.jpeg'},
+	{id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая', image: 'src/assets/images.jpeg'},
+	{id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые', image: 'src/assets/images.jpeg'},
+	{id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая', image: 'src/assets/images.jpeg'},
 ];
 
 const getTotalPrice = (items = []) => {
