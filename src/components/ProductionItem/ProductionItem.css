@@ -23,18 +23,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
     border: none;
     padding: 10px;
-    cursor: pointer;
     margin-top: 10px;
-    border-radius: 20px; /* Makes the button rounded */
+    border-radius: 10px;
 }
 
-.add-btn:hover, .decrement-btn:hover, .increment-btn:hover {
-    background-color: var(--tg-theme-button-color-hover);
-}
+/*.add-btn:hover, .decrement-btn:hover, .increment-btn:hover {*/
+/*    background-color: var(--tg-theme-button-color-hover);*/
+/*}*/
 
 .add-icon {
     margin-left: 5px;

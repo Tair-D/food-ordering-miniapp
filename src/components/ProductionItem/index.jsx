@@ -37,7 +37,7 @@ const ProductItem = ({product, className, onAdd, addedItems}) => {
 	};
 
 	const truncateDescription = (description) => {
-		return description.length > 100 ? description.substring(0, 100) + '...' : description;
+		return description.length > 20 ? description.substring(0, 20) + '...' : description;
 	};
 
 	return (
