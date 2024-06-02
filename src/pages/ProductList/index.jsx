@@ -64,7 +64,7 @@ const products = [
 
 const getTotalPrice = (items = []) => {
 	return items.reduce((acc, item) => {
-		return acc += item.price;
+		return acc + (item.price * (item.count || 1)); // Consider item count
 	}, 0);
 };
 
@@ -94,14 +94,20 @@ const ProductList = () => {
 		};
 	}, [onSendData]);
 
-	const onAdd = (product) => {
+	const onAdd = (product, remove = false) => {
 		const alreadyAdded = addedItems.find(item => item.id === product.id);
 		let newItems = [];
 
 		if (alreadyAdded) {
-			newItems = addedItems.filter(item => item.id !== product.id);
+			if (remove) {
+				newItems = addedItems.filter(item => item.id !== product.id);
+			} else {
+				newItems = addedItems.map(item =>
+					item.id === product.id ? {...item, count: product.count} : item
+				);
+			}
 		} else {
-			newItems = [...addedItems, product];
+			newItems = [...addedItems, {...product, count: product.count || 1}];
 		}
 
 		setAddedItems(newItems);
@@ -116,11 +122,11 @@ const ProductList = () => {
 		}
 	};
 
-
 	return (
 		<div className={'list'}>
 			{products.map(item => (
 				<ProductItem
+					key={item.id}
 					product={item}
 					onAdd={onAdd}
 					className={'item'}

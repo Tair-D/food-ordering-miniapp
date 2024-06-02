@@ -8,7 +8,7 @@ const ProductItem = ({product, className, onAdd, addedItems}) => {
 	useEffect(() => {
 		const addedItem = addedItems?.find(item => item.id === product.id);
 		if (addedItem) {
-			setCount(1);
+			setCount(addedItem.count || 1); // Assuming you might want to track count in addedItems
 		} else {
 			setCount(0);
 		}
@@ -20,15 +20,19 @@ const ProductItem = ({product, className, onAdd, addedItems}) => {
 	};
 
 	const onIncrementHandler = () => {
-		onAdd(product);
+		const updatedProduct = {...product, count: (count + 1)};
+		setCount(count + 1);
+		onAdd(updatedProduct);
 	};
 
 	const onDecrementHandler = () => {
 		if (count > 1) {
+			const updatedProduct = {...product, count: (count - 1)};
 			setCount(count - 1);
+			onAdd(updatedProduct);
 		} else {
 			setCount(0);
-			onAdd(product);
+			onAdd(product, true); // Passing a second argument to indicate removal
 		}
 	};
 
