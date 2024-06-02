@@ -18,30 +18,55 @@
     color: var(--tg-theme-hint-color);
 }
 
-.add-btn {
+.add-btn, .decrement-btn, .increment-btn {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
     border: none;
     padding: 10px;
     cursor: pointer;
     margin-top: 10px;
-    border-radius: 20px;
+    border-radius: 20px; /* Makes the button rounded */
 }
 
-.add-btn:hover {
+.add-btn:hover, .decrement-btn:hover, .increment-btn:hover {
     background-color: var(--tg-theme-button-color-hover);
 }
 
 .add-icon {
+    margin-left: 5px;
     font-size: 1.2em;
 }
 
 .price-text {
     margin-right: auto;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.decrement-btn, .increment-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    border-radius: 50%;
+}
+
+.item-count {
+    font-size: 1.2em;
+    padding: 0 10px;
+    font-weight: bold;
 }
 
 .title {
