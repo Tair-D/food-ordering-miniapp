@@ -63,16 +63,6 @@ export const products = [
 	},
 ];
 
-const test = [
-	{
-		count: 1,
-		description: "Зеленого цвета, теплая",
-		id: "2",
-		image: "https://i.pinimg.com/originals/6f/5f/53/6f5f5332cd54ba419022a4882935dbd5.png",
-		price: 12000,
-		title: "Куртка",
-	}
-];
 
 const getTotalPrice = (items = []) => {
 	return items.reduce((acc, item) => {
@@ -157,6 +147,7 @@ const ProductList = () => {
 					addedItems={addedItems}
 				/>
 			))}
+			{/*<button onClick={handleShowOrder}>buy</button>*/}
 		</div>
 	);
 };

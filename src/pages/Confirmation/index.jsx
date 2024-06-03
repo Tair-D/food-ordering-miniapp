@@ -1,9 +1,13 @@
 import React, {useCallback, useEffect} from 'react';
 import {useTelegram} from "../../hooks/useTelegram";
 import './Confirmation.css';
+import {useLocation} from "react-router-dom";
 
-const ConfirmationPage = ({order}) => {
+const ConfirmationPage = () => {
 	const {tg, queryId} = useTelegram();
+	const location = useLocation();
+	const order = location.state?.order || [];
+
 	console.log("hrere", order);
 	const onSendData = useCallback(() => {
 		const data = {
@@ -40,7 +44,7 @@ const ConfirmationPage = ({order}) => {
 							</div>
 							<div className="cafe-order-item-counter">Кол-во: {item.count}</div>
 							<div className="cafe-order-item-description">{item.description}</div>
-							<div className="cafe-order-item-price">Цена: {item.price * item.count} ₸</div>
+							<div className="cafe-order-item-price">Цена: {item.price} ₸</div>
 						</div>
 					</div>
 				))}
