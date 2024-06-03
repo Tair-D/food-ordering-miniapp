@@ -50,9 +50,6 @@ const ShippingInfo = () => {
 					/>
 					<label>Save this information for next time</label>
 				</div>
-				<button type="submit" className="button">
-					Submit
-				</button>
 			</form>
 		</div>
 	);
