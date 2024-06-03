@@ -2,7 +2,7 @@ import './App.css';
 import {useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 import {Route, Routes} from 'react-router-dom';
-import ProductList, {products} from "./pages/ProductList/index.jsx";
+import ProductList from "./pages/ProductList/index.jsx";
 import Registration from "./pages/Registration/index.jsx";
 import ConfirmationPage from "./pages/Confirmation/index.jsx";
 
@@ -19,7 +19,7 @@ function App() {
 			<Routes>
 				<Route index element={<ProductList/>}/>
 				<Route path={'form'} element={<Registration/>}/>
-				<Route path={'confirmation'} element={<ConfirmationPage order={products}/>}/>
+				<Route path={'confirmation'} element={<ConfirmationPage/>}/>
 			</Routes>
 		</div>
 	);

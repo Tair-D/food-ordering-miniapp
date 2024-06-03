@@ -136,7 +136,7 @@ const ProductList = () => {
 	};
 
 	const handleShowOrder = () => {
-		navigate('/confirmation', {state: {order: test}});
+		navigate('/confirmation', {state: {order: addedItems}});
 	};
 
 	useEffect(() => {
