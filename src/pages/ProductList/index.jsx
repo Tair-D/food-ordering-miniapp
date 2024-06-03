@@ -123,7 +123,7 @@ const ProductList = () => {
 	};
 
 	return (
-		<div className={'list'}>
+		<div className={'cafe-page cafe-items'}>
 			{products.map(item => (
 				<ProductItem
 					key={item.id}

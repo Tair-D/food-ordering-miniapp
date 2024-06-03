@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Button from "../Button";
 import "./ProductionItem.css";
+import "../../App.css";
 
 const ProductItem = ({product, className, onAdd, addedItems}) => {
 	const [count, setCount] = useState(0);
