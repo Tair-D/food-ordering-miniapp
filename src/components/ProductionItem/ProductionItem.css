@@ -4,6 +4,8 @@
     /*border: 1px solid var(--tg-theme-button-color);*/
     padding: 15px;
     width: 170px;
+    position: relative; /* Added to ensure absolute positioning works */
+
 }
 
 .img {
@@ -48,6 +50,8 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    gap: 10px;
+
 }
 
 .decrement-btn, .increment-btn {
@@ -88,3 +92,20 @@
     color: var(--tg-theme-text-color);
     margin-top: 5px;
 }
+
+.cafe-item-counter {
+    position: absolute;
+
+    min-width: 22px;
+    top: 0;
+    right: 0;
+    margin: 4px 6px;
+    border-radius: 11px;
+    animation: var(--animation) both;
+    pointer-events: none;
+    text-align: center;
+
+    z-index: 3;
+
+}
+

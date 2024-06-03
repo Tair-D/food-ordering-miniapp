@@ -43,6 +43,7 @@ const ProductItem = ({product, className, onAdd, addedItems}) => {
 
 	return (
 		<div className={`product ${className}`}>
+			{count > 0 && <div className="cafe-item-counter">{count}</div>}
 			<div className="img">
 				<img src={product.image} alt={product.title} className="img"/>
 			</div>
@@ -55,7 +56,6 @@ const ProductItem = ({product, className, onAdd, addedItems}) => {
 			) : (
 				<div className="quantity-controls">
 					<Button className="decrement-btn" onClick={onDecrementHandler}>-</Button>
-					<span className="item-count">{count}</span>
 					<Button className="increment-btn" onClick={onIncrementHandler}>+</Button>
 				</div>
 			)}

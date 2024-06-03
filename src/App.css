@@ -199,20 +199,6 @@ button,
     border: none;
 }
 
-.cafe-item-counter {
-    position: absolute;
-    right: 0;
-    top: 0;
-    min-width: 22px;
-    height: 22px;
-    padding: 2px 6px;
-    margin: 4px 6px;
-    border-radius: 11px;
-    transform: scale3d(0, 0, 1);
-    animation: var(--animation) both;
-    pointer-events: none;
-    z-index: 3;
-}
 
 .cafe-item-incr-button {
     position: absolute !important;
