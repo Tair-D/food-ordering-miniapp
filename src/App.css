@@ -23,7 +23,7 @@ body {
     --animation: .15s ease;
     --page-animation-duration: .3s;
     --page-animation: var(--page-animation-duration) ease;
-    --status-height: 48px;
+    /*--status-height: 48px;*/
     --accent-color: #31b545;
     --main-color: #f8a917;
     --text-color: #222;
@@ -84,16 +84,16 @@ body.order-mode .cafe-items {
     opacity: 0 !important;
 }
 
-.cafe-items:after {
-    content: '';
-    flex-grow: 2;
-}
+/*.cafe-items:after {*/
+/*    content: '';*/
+/*    flex-grow: 2;*/
+/*}*/
 
 .cafe-item,
 .cafe-item-shadow {
     position: relative;
     width: 120px;
-    height: 159px;
+    /*height: 159px;*/
     padding: 4px 5px 21px;
     box-sizing: border-box;
     text-align: center;
