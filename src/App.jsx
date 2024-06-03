@@ -39,6 +39,7 @@ function App() {
 				<Route index element={<ProductList/>}/>
 				<Route path={'form'} element={<Registration/>}/>
 				<Route path={'confirmation'} element={<ConfirmationPage/>}/>
+				<Route path={'registration'} element={<Registration/>}/>
 			</Routes>
 		</div>
 	);

@@ -1,14 +1,13 @@
 import React, {useCallback, useEffect} from 'react';
 import {useTelegram} from "../../hooks/useTelegram";
 import './Confirmation.css';
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const ConfirmationPage = () => {
 	const {tg, queryId} = useTelegram();
 	const location = useLocation();
 	const order = location.state?.order || [];
 
-	console.log("hrere", order);
 	const onSendData = useCallback(() => {
 		const data = {
 			products: order,
@@ -38,6 +37,12 @@ const ConfirmationPage = () => {
 		};
 	}, [onSendData, tg]);
 
+	const navigate = useNavigate();
+
+	const handleOpenRegistration = () => {
+		navigate('/registration');
+	};
+
 	return (
 		<div className="confirmation-page">
 			<h2 className="cafe-order-header">Ваш Заказ</h2>
@@ -59,6 +64,7 @@ const ConfirmationPage = () => {
 			<div className="order-total">
 				<span>Общая стоимость: {order?.reduce((acc, item) => acc + item.price * item.count, 0)} ₸</span>
 			</div>
+			<button onClick={handleOpenRegistration}>Register</button>
 		</div>
 	);
 };
