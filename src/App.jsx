@@ -5,6 +5,7 @@ import {Route, Routes} from 'react-router-dom';
 import ProductList from "./pages/ProductList/index.jsx";
 import Registration from "./pages/Registration/index.jsx";
 import ConfirmationPage from "./pages/Confirmation/index.jsx";
+import ShippingInfo from "./pages/ShippingInfo/index.jsx";
 
 const test = [
 	{
@@ -39,7 +40,7 @@ function App() {
 				<Route index element={<ProductList/>}/>
 				<Route path={'form'} element={<Registration/>}/>
 				<Route path={'confirmation'} element={<ConfirmationPage/>}/>
-				<Route path={'registration'} element={<Registration/>}/>
+				<Route path={'registration'} element={<ShippingInfo/>}/>
 			</Routes>
 		</div>
 	);
