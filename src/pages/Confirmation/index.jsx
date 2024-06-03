@@ -25,6 +25,13 @@ const ConfirmationPage = () => {
 	}, [order, queryId]);
 
 	useEffect(() => {
+		tg.MainButton.show();
+		tg.MainButton.setParams({
+			text: `Оформить`
+		});
+	}, []);
+
+	useEffect(() => {
 		tg.onEvent('mainButtonClicked', onSendData);
 		return () => {
 			tg.offEvent('mainButtonClicked', onSendData);
@@ -33,7 +40,7 @@ const ConfirmationPage = () => {
 
 	return (
 		<div className="confirmation-page">
-			<h2 className="cafe-order-header">Your Order</h2>
+			<h2 className="cafe-order-header">Ваш Заказ</h2>
 			<div className="order-items">
 				{order?.map(item => (
 					<div key={item.id} className="order-item">
@@ -50,7 +57,7 @@ const ConfirmationPage = () => {
 				))}
 			</div>
 			<div className="order-total">
-				<span>Total Price: {order?.reduce((acc, item) => acc + item.price * item.count, 0)} ₸</span>
+				<span>Общая стоимость: {order?.reduce((acc, item) => acc + item.price * item.count, 0)} ₸</span>
 			</div>
 		</div>
 	);
