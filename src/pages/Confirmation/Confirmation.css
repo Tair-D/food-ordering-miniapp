@@ -1,0 +1,41 @@
+.confirmation-page {
+    padding: 20px;
+    text-align: center;
+}
+
+.confirmation-page h1 {
+    margin-bottom: 20px;
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.order-item-image {
+    width: 50px;
+    height: 50px;
+}
+
+.order-item-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.order-item-title, .order-item-count, .order-item-price {
+    margin: 5px 0;
+}
+
+.order-total {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}

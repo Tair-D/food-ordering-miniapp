@@ -1,9 +1,10 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './ProductList.css';
 import {useTelegram} from "../../hooks/useTelegram";
 import ProductItem from "../../components/ProductionItem/index.jsx";
+import {useNavigate} from "react-router-dom";
 
-const products = [
+export const products = [
 	{
 		id: '1',
 		title: 'Джинсы',
@@ -62,37 +63,49 @@ const products = [
 	},
 ];
 
+const test = [
+	{
+		count: 1,
+		description: "Зеленого цвета, теплая",
+		id: "2",
+		image: "https://i.pinimg.com/originals/6f/5f/53/6f5f5332cd54ba419022a4882935dbd5.png",
+		price: 12000,
+		title: "Куртка",
+	}
+];
+
 const getTotalPrice = (items = []) => {
 	return items.reduce((acc, item) => {
-		return acc + (item.price * (item.count || 1)); // Consider item count
+		return acc + (item.price * (item.count || 1));
 	}, 0);
 };
 
 const ProductList = () => {
 	const [addedItems, setAddedItems] = useState([]);
 	const {tg, queryId} = useTelegram();
+	const navigate = useNavigate();
+	console.log("addedItems", addedItems);
+	// const onSendData = useCallback(() => {
+	// 	const data = {
+	// 		products: addedItems,
+	// 		totalPrice: getTotalPrice(addedItems),
+	// 		queryId,
+	// 	};
+	// 	fetch('https://food-delivery-bot-8fa24de3ce48.herokuapp.com/web-data', {
+	// 		method: 'POST',
+	// 		headers: {
+	// 			'Content-Type': 'application/json',
+	// 		},
+	// 		body: JSON.stringify(data)
+	// 	});
+	// }, [addedItems]);
 
-	const onSendData = useCallback(() => {
-		const data = {
-			products: addedItems,
-			totalPrice: getTotalPrice(addedItems),
-			queryId,
-		};
-		fetch('https://food-delivery-bot-8fa24de3ce48.herokuapp.com/web-data', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data)
-		});
-	}, [addedItems]);
-
-	useEffect(() => {
-		tg.onEvent('mainButtonClicked', onSendData);
-		return () => {
-			tg.offEvent('mainButtonClicked', onSendData);
-		};
-	}, [onSendData]);
+	// useEffect(() => {
+	// 	tg.onEvent('mainButtonClicked', onSendData);
+	// 	return () => {
+	// 		tg.offEvent('mainButtonClicked', onSendData);
+	// 	};
+	// }, [onSendData]);
 
 	const onAdd = (product, remove = false) => {
 		const alreadyAdded = addedItems.find(item => item.id === product.id);
@@ -117,10 +130,21 @@ const ProductList = () => {
 		} else {
 			tg.MainButton.show();
 			tg.MainButton.setParams({
-				text: `Купить ${getTotalPrice(newItems)}`
+				text: `К оформлению ${getTotalPrice(newItems)}`
 			});
 		}
 	};
+
+	const handleShowOrder = () => {
+		navigate('/confirmation', {state: {order: test}});
+	};
+
+	useEffect(() => {
+		tg.onEvent('mainButtonClicked', handleShowOrder);
+		return () => {
+			tg.offEvent('mainButtonClicked', handleShowOrder);
+		};
+	}, [handleShowOrder, tg]);
 
 	return (
 		<div className={'cafe-page cafe-items'}>

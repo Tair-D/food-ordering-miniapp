@@ -227,7 +227,7 @@ var Cafe = {
 			$('body').removeClass('order-mode');
 			setTimeout(function () {
 				$('.cafe-items').css('maxHeight', '');
-				$('.cafe-order-overview').hide();
+				$('.cafe-order-overview').show();
 				$('.js-item-lottie').each(function () {
 					RLottie.setVisible(this, true);
 				});

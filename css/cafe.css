@@ -327,9 +327,9 @@ button,
     opacity: 0;
 }
 
-body.order-mode .cafe-order-overview {
-    opacity: 1;
-}
+/*body.order-mode .cafe-order-overview {*/
+/*    opacity: 1;*/
+/*}*/
 
 .cafe-order-header-wrap {
     padding: 21px 20px 14px;
