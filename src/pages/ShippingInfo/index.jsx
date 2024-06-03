@@ -48,7 +48,7 @@ const ShippingInfo = () => {
 						onChange={handleSaveDataToggle}
 						className="checkbox"
 					/>
-					<label>Save this information for next time</label>
+					<label className="label">Save this information for next time</label>
 				</div>
 			</form>
 		</div>

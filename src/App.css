@@ -27,7 +27,7 @@ body {
     --accent-color: #31b545;
     --main-color: #f8a917;
     --text-color: #222;
-    --page-hint-color: #83878a;
+    --page-hint-color: var(--tg-theme-hint-color);
     --hint-color: #74787a;
     --placeholder-color: #999da1;
     --ripple-duration: .45s;
@@ -41,7 +41,7 @@ html.dark body {
     --block-bg-color: var(--tg-theme-bg-color);
     --bg-color: #0f0f0f;
     --text-color: #fff;
-    --page-hint-color: #9b9ba1;
+    --page-hint-color: var(--tg-theme-hint-color);
     --hint-color: #64666d;
     --placeholder-color: #5d6163;
 }
@@ -336,6 +336,7 @@ body.order-mode .cafe-order-overview {
     flex-grow: 1;
     padding: 0;
     margin: 0;
+    color: var(--tg-theme-text-color);
 }
 
 .cafe-order-edit {
@@ -379,6 +380,7 @@ body.order-mode .cafe-order-overview {
     line-height: 18px;
     font-weight: 700;
     padding: 3px 0;
+    color: var(--tg-theme-text-color);
 }
 
 .cafe-order-item-counter {
@@ -398,6 +400,7 @@ body.order-mode .cafe-order-overview {
     line-height: 17px;
     font-weight: 500;
     padding: 4px 0;
+    color: var(--tg-theme-text-color);
 }
 
 .cafe-text-field-wrap {
