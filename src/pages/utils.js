@@ -75,7 +75,7 @@ export const products = [
 		id: '13',
 		title: 'Батон “Ржаной”',
 		price: 220,
-		image: 'https://i.pinimg.com/originals/6f/5f/53/6f5f5332cd54ba419022a4882935dbd5.png'
+		image: 'https://i.postimg.cc/PrMjyKYj/rzhannoy.png'
 	},
 	{
 		id: '14',
@@ -87,12 +87,12 @@ export const products = [
 		id: '15',
 		title: 'Хлеб “Сибирский” Ржаной в нарезке',
 		price: 240,
-		image: 'https://i.pinimg.com/originals/6f/5f/53/6f5f5332cd54ba419022a4882935dbd5.png'
+		image: 'https://i.postimg.cc/hGYgxjxQ/Sibirski.png'
 	},
 	{
 		id: '16',
 		title: 'Батон “Молочный Нарезной” нарезной батон',
 		price: 180,
-		image: 'https://i.pinimg.com/originals/6f/5f/53/6f5f5332cd54ba419022a4882935dbd5.png'
+		image: 'https://i.postimg.cc/Pr1xjmD3/Molochniy-nareznoy.png'
 	},
 ];
