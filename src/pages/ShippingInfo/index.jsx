@@ -19,10 +19,10 @@ const ShippingInfo = () => {
 
 	return (
 		<div className="container">
-			<h2>Shipping Information</h2>
+			<h2>Информация о доставке</h2>
 			<form onSubmit={handleSubmit}>
 				<div>
-					<label className="label">Address:</label>
+					<label className="label">Адрес:</label>
 					<input
 						type="text"
 						value={address}
@@ -32,7 +32,7 @@ const ShippingInfo = () => {
 					/>
 				</div>
 				<div>
-					<label className="label">Receiver Name:</label>
+					<label className="label">Фамилия Имя Получателя:</label>
 					<input
 						type="text"
 						value={receiverName}

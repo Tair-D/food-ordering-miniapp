@@ -1,11 +1,17 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useTelegram} from "../../hooks/useTelegram";
 import './Confirmation.css';
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation} from "react-router-dom";
+import '../ShippingInfo/ShippingInfo.css';
 
 const ConfirmationPage = () => {
 	const {tg, queryId} = useTelegram();
 	const location = useLocation();
+	const [address, setAddress] = useState('');
+	const [receiverName, setReceiverName] = useState('');
+	const [shopName, setShopName] = useState('');
+	const [saveData, setSaveData] = useState(false);
+
 	const order = location.state?.order || [];
 
 	const onSendData = useCallback(() => {
@@ -14,6 +20,7 @@ const ConfirmationPage = () => {
 			totalPrice: order?.reduce((acc, item) => acc + item.price * item.count, 0),
 			queryId,
 		};
+
 		fetch('https://food-delivery-bot-8fa24de3ce48.herokuapp.com/web-data', {
 			method: 'POST',
 			headers: {
@@ -24,23 +31,29 @@ const ConfirmationPage = () => {
 	}, [order, queryId]);
 
 	useEffect(() => {
-		tg.MainButton.show();
-		tg.MainButton.setParams({
-			text: `Оформить`
-		});
-	}, []);
-
-	useEffect(() => {
 		tg.onEvent('mainButtonClicked', onSendData);
 		return () => {
 			tg.offEvent('mainButtonClicked', onSendData);
 		};
 	}, [onSendData, tg]);
 
-	const navigate = useNavigate();
+	useEffect(() => {
+		if (address && receiverName && shopName) {
+			tg.MainButton.show();
+		} else {
+			tg.MainButton.hide();
+		}
+	}, [address, receiverName, shopName, tg]);
 
-	const handleOpenRegistration = () => {
-		navigate('/registration');
+	const handleAddressChange = (e) => setAddress(e.target.value);
+	const handleReceiverNameChange = (e) => setReceiverName(e.target.value);
+	const handleShopNameChange = (e) => setShopName(e.target.value);
+	const handleSaveDataToggle = () => setSaveData(!saveData);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const shippingData = {address, receiverName, saveData};
+		console.log(shippingData);
 	};
 
 	return (
@@ -64,7 +77,52 @@ const ConfirmationPage = () => {
 			<div className="order-total">
 				<span>Общая стоимость: {order?.reduce((acc, item) => acc + item.price * item.count, 0)} ₸</span>
 			</div>
-			<button onClick={handleOpenRegistration}>Register</button>
+
+			<div className="container">
+				<h2>Информация о доставке</h2>
+				<form onSubmit={handleSubmit}>
+					<div>
+						<div>
+							<label className="label">Фамилия Имя Получателя:</label>
+							<input
+								type="text"
+								value={receiverName}
+								onChange={handleReceiverNameChange}
+								className="input"
+								required
+							/>
+						</div>
+						<div>
+							<label className="label">Название магазина:</label>
+							<input
+								type="text"
+								value={shopName}
+								onChange={handleShopNameChange}
+								className="input"
+								required
+							/>
+						</div>
+						<label className="label">Адрес:</label>
+						<input
+							type="text"
+							value={address}
+							onChange={handleAddressChange}
+							className="input"
+							required
+						/>
+					</div>
+
+					<div className="checkbox-container">
+						<input
+							type="checkbox"
+							checked={saveData}
+							onChange={handleSaveDataToggle}
+							className="checkbox"
+						/>
+						<label className="label">Сохранить информацию для следующего раза</label>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 };
