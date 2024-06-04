@@ -3,7 +3,7 @@ export const products = [
 		id: '1',
 		title: '“Vitalnan" Цельнозерновой Хлеб Полезная рожь (Без муки)',
 		price: 350,
-		image: 'https://i.pinimg.com/originals/6f/5f/53/6f5f5332cd54ba419022a4882935dbd5.png'
+		image: 'https://i.postimg.cc/kgGDqvwn/Poleznaya-Rosh.jpg'
 	},
 	{
 		id: '2',
@@ -63,7 +63,7 @@ export const products = [
 		id: '11',
 		title: 'Хлеб “Южный” Нарезанный Ржаной',
 		price: 240,
-		image: 'https://i.postimg.cc/HxtcdXF1/juzhnii.jpg'
+		image: 'https://i.postimg.cc/6qKyKsbS/Yuzhniy-Hleb.png'
 	},
 	{
 		id: '12',
