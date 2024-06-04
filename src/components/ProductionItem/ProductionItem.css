@@ -1,11 +1,9 @@
 .product {
     display: flex;
     flex-direction: column;
-    /*border: 1px solid var(--tg-theme-button-color);*/
     padding: 15px;
     width: 170px;
     position: relative; /* Added to ensure absolute positioning works */
-
 }
 
 .img {
@@ -18,6 +16,7 @@
 .description {
     font-size: 0.8em;
     color: var(--tg-theme-hint-color);
+    flex-grow: 1;
 }
 
 .add-btn, .decrement-btn, .increment-btn {
@@ -83,7 +82,13 @@
     color: var(--tg-theme-text-color);
     font-weight: bold;
     margin-top: 10px;
+    /*min-height: 100px; !* Ensuring a minimum height *!*/
+    display: flex;
+    /*align-items: center; !* Center alignment *!*/
+    /*justify-content: center; !* Center alignment *!*/
+    /*text-align: center; !* Center text *!*/
 }
+
 
 .price {
     color: var(--tg-theme-text-color);

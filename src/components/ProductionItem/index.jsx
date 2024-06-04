@@ -7,13 +7,13 @@ const ProductItem = ({product, className, onAdd, addedItems}) => {
 	const [count, setCount] = useState(0);
 
 	useEffect(() => {
-		const addedItem = addedItems?.find(item => item.id === product.id);
+		const addedItem = addedItems?.find(item => item.id === product?.id);
 		if (addedItem) {
 			setCount(addedItem.count || 1); // Assuming you might want to track count in addedItems
 		} else {
 			setCount(0);
 		}
-	}, [addedItems, product.id]);
+	}, [addedItems, product?.id]);
 
 	const onAddHandler = () => {
 		setCount(1);
@@ -38,20 +38,20 @@ const ProductItem = ({product, className, onAdd, addedItems}) => {
 	};
 
 	const truncateDescription = (description) => {
-		return description.length > 20 ? description.substring(0, 20) + '...' : description;
+		return description?.length > 20 ? description.substring(0, 20) + '...' : description;
 	};
 
 	return (
 		<div className={`product ${className}`}>
 			{count > 0 && <div className="cafe-item-counter">{count}</div>}
 			<div className="img">
-				<img src={product.image} alt={product.title} className="img"/>
+				<img src={product?.image} alt={product?.title} className="img"/>
 			</div>
-			<div className="title">{product.title}</div>
-			<div className="description">{truncateDescription(product.description)}</div>
+			<div className="title">{product?.title}</div>
+			<div className="description">{truncateDescription(product?.description)}</div>
 			{count === 0 ? (
 				<Button className="add-btn" onClick={onAddHandler}>
-					<span className="price-text">{product.price} ₸</span> <span className="add-icon">+</span>
+					<span className="price-text">{product?.price} ₸</span> <span className="add-icon">+</span>
 				</Button>
 			) : (
 				<div className="quantity-controls">
