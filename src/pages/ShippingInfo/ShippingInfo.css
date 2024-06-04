@@ -9,11 +9,10 @@
     /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
 }
 
-h2 {
-    text-align: center;
-    color: var(--tg-theme-text-color);
-    margin-bottom: 20px;
-}
+/*h2 {*/
+
+/*    color: var(--tg-theme-text-color);*/
+/*}*/
 
 .label {
     display: block;

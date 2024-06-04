@@ -330,6 +330,8 @@ body.order-mode .cafe-order-overview {
 }
 
 .cafe-order-header {
+    text-align: center;
+    /*margin-bottom: 20px;*/
     font-size: 17px;
     line-height: 21px;
     text-transform: uppercase;
@@ -337,6 +339,10 @@ body.order-mode .cafe-order-overview {
     padding: 0;
     margin: 0;
     color: var(--tg-theme-text-color);
+}
+
+.shipping-info {
+    margin-top: 20px;
 }
 
 .cafe-order-edit {

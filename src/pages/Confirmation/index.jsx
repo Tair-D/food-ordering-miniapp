@@ -10,6 +10,7 @@ const ConfirmationPage = () => {
 	const [address, setAddress] = useState('');
 	const [receiverName, setReceiverName] = useState('');
 	const [shopName, setShopName] = useState('');
+	const [phoneNumber, setPhoneNumber] = useState('');
 	const [saveData, setSaveData] = useState(false);
 
 	const order = location.state?.order || [];
@@ -48,6 +49,7 @@ const ConfirmationPage = () => {
 	const handleAddressChange = (e) => setAddress(e.target.value);
 	const handleReceiverNameChange = (e) => setReceiverName(e.target.value);
 	const handleShopNameChange = (e) => setShopName(e.target.value);
+	const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
 	const handleSaveDataToggle = () => setSaveData(!saveData);
 
 	const handleSubmit = (e) => {
@@ -59,9 +61,9 @@ const ConfirmationPage = () => {
 	return (
 		<div className="confirmation-page">
 			<div className="container">
-				<h2>Информация о доставке</h2>
+				<h2 className="cafe-order-header">Информация о доставке</h2>
 				<form onSubmit={handleSubmit}>
-					<div>
+					<div className="shipping-info">
 						<div>
 							<label className="label">Фамилия Имя Получателя:</label>
 							<input
@@ -82,14 +84,26 @@ const ConfirmationPage = () => {
 								required
 							/>
 						</div>
-						<label className="label">Адрес:</label>
-						<input
-							type="text"
-							value={address}
-							onChange={handleAddressChange}
-							className="input"
-							required
-						/>
+						<div>
+							<label className="label">Адрес:</label>
+							<input
+								type="text"
+								value={address}
+								onChange={handleAddressChange}
+								className="input"
+								required
+							/>
+						</div>
+						<div>
+							<label className="label">Номер телефона:</label>
+							<input
+								type="tel"
+								value={phoneNumber}
+								onChange={handlePhoneNumberChange}
+								className="input"
+								required
+							/>
+						</div>
 					</div>
 
 					<div className="checkbox-container">
