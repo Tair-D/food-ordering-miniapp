@@ -102,6 +102,8 @@ const ConfirmationPage = () => {
 								onChange={handlePhoneNumberChange}
 								className="input"
 								required
+								pattern="[0-9]{10}"
+								title="Введите валидный телефон номер"
 							/>
 						</div>
 					</div>
