@@ -17,10 +17,27 @@ const ConfirmationPage = () => {
 	const navigate = useNavigate();
 
 	const onSendData = useCallback(() => {
+		if (saveData) {
+			const userData = {
+				address,
+				receiverName,
+				shopName,
+				phoneNumber,
+				saveData,
+			};
+			localStorage.setItem('userData', JSON.stringify(userData));
+		} else {
+			localStorage.removeItem('userData');
+		}
+
 		const data = {
 			products: order,
 			totalPrice: order?.reduce((acc, item) => acc + item.price * item.count, 0),
 			queryId,
+			address,
+			receiverName,
+			shopName,
+			phoneNumber
 		};
 
 		fetch('https://food-delivery-bot-8fa24de3ce48.herokuapp.com/web-data', {
@@ -30,7 +47,8 @@ const ConfirmationPage = () => {
 			},
 			body: JSON.stringify(data)
 		});
-	}, [order, queryId]);
+	}, [order, queryId, address, receiverName, shopName, phoneNumber, saveData]);
+
 
 	useEffect(() => {
 		tg.onEvent('mainButtonClicked', onSendData);
@@ -53,14 +71,39 @@ const ConfirmationPage = () => {
 	const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
 	const handleSaveDataToggle = () => setSaveData(!saveData);
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		const shippingData = {address, receiverName, saveData};
-		console.log(shippingData);
-	};
 	const handleEditClick = () => {
 		navigate('/', {state: {order}});
 	};
+
+	useEffect(() => {
+		const savedData = JSON.parse(localStorage.getItem('userData'));
+		if (savedData) {
+			setAddress(savedData.address);
+			setReceiverName(savedData.receiverName);
+			setShopName(savedData.shopName);
+			setPhoneNumber(savedData.phoneNumber);
+			setSaveData(savedData.saveData);
+		}
+	}, []);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (saveData) {
+			const userData = {
+				address,
+				receiverName,
+				shopName,
+				phoneNumber,
+				saveData,
+			};
+			localStorage.setItem('userData', JSON.stringify(userData));
+		} else {
+			localStorage.removeItem('userData');
+		}
+		const shippingData = {address, receiverName, shopName, phoneNumber, saveData};
+		console.log(shippingData);
+	};
+
 
 	return (
 		<div className="confirmation-page">
@@ -106,7 +149,7 @@ const ConfirmationPage = () => {
 								onChange={handlePhoneNumberChange}
 								className="input"
 								required
-								pattern="\+7\(\d{3}\)\d{7}"
+								pattern="[0-9]{10}"
 								title="Введите валидный телефон номер"
 							/>
 						</div>
@@ -121,6 +164,8 @@ const ConfirmationPage = () => {
 						/>
 						<label className="label">Сохранить информацию для следующего раза</label>
 					</div>
+					<button type="submit" className="submit-button">Отправить</button>
+
 				</form>
 			</div>
 			<div>
