@@ -45,7 +45,7 @@ function App() {
 		return () => {
 			tg.offEvent('close', showConfirmationDialog);
 		};
-	}, [showConfirmationDialog, tg]);
+	}, []);
 
 	return (
 		<div className="App">
