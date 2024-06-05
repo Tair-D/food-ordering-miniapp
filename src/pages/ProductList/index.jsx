@@ -51,6 +51,12 @@ const ProductList = () => {
 	const handleShowOrder = () => {
 		navigate('/confirmation', {state: {order: addedItems}});
 	};
+	
+	useEffect(() => {
+		if (addedItems?.length > 0) {
+			tg.MainButton.show();
+		}
+	}, []);
 
 	useEffect(() => {
 		tg.onEvent('mainButtonClicked', handleShowOrder);
