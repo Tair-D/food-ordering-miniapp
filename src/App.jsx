@@ -27,32 +27,11 @@ const test = [
 ];
 
 function App() {
-	const {tg, onClose} = useTelegram();
-
-	const showConfirmationDialog = () => {
-		tg.showConfirm(
-			"Are you sure you want to close?",
-			function (confirm) {
-				if (confirm) {
-					// User confirmed to close, proceed with the close action
-					onClose();
-				} else {
-					// User canceled, do nothing and keep the web app open
-					tg.disableClosingConfirmation();
-				}
-			}
-		);
-	};
+	const {tg} = useTelegram();
 
 	useEffect(() => {
 		tg.ready();
 		tg.enableClosingConfirmation();
-		tg.onEvent('close', showConfirmationDialog);
-
-		// Cleanup the event listener on component unmount
-		return () => {
-			tg.offEvent('close', showConfirmationDialog);
-		};
 	}, [tg]);
 
 	return (
