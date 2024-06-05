@@ -18,8 +18,6 @@ const ProductList = () => {
 	const order = location.state?.order || [];
 	const [addedItems, setAddedItems] = useState(order ? order : []);
 
-	console.log("order", order);
-
 	const onAdd = (product, remove = false) => {
 		const alreadyAdded = addedItems.find(item => item.id === product.id);
 		let newItems = [];
@@ -51,7 +49,7 @@ const ProductList = () => {
 	const handleShowOrder = () => {
 		navigate('/confirmation', {state: {order: addedItems}});
 	};
-	
+
 	useEffect(() => {
 		if (addedItems?.length > 0) {
 			tg.MainButton.show();
