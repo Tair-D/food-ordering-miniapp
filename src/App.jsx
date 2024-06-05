@@ -27,11 +27,25 @@ const test = [
 ];
 
 function App() {
-	const {onToggleButton, tg} = useTelegram();
+	const {tg, onClose} = useTelegram();
+
+	const showConfirmationDialog = (event) => {
+		event.preventDefault();
+
+		const userConfirmed = confirm("Вы уверены закрыть?");
+		if (userConfirmed) {
+			onClose();
+		}
+	};
 
 	useEffect(() => {
 		tg.ready();
-	}, []);
+		tg.onEvent('close', showConfirmationDialog);
+
+		return () => {
+			tg.offEvent('close', showConfirmationDialog);
+		};
+	}, [showConfirmationDialog, tg]);
 
 	return (
 		<div className="App">
