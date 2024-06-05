@@ -102,7 +102,7 @@ const ConfirmationPage = () => {
 								onChange={handlePhoneNumberChange}
 								className="input"
 								required
-								pattern="[0-9]{10}"
+								pattern="\+7\(\d{3}\)\d{7}"
 								title="Введите валидный телефон номер"
 							/>
 						</div>
