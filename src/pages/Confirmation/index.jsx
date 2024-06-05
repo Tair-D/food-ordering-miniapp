@@ -164,8 +164,6 @@ const ConfirmationPage = () => {
 						/>
 						<label className="label">Сохранить информацию для следующего раза</label>
 					</div>
-					<button type="submit" className="submit-button">Отправить</button>
-
 				</form>
 			</div>
 			<div>
