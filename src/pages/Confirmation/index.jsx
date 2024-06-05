@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useTelegram} from "../../hooks/useTelegram";
 import './Confirmation.css';
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import '../ShippingInfo/ShippingInfo.css';
 
 const ConfirmationPage = () => {
@@ -14,6 +14,7 @@ const ConfirmationPage = () => {
 	const [saveData, setSaveData] = useState(false);
 
 	const order = location.state?.order || [];
+	const navigate = useNavigate();
 
 	const onSendData = useCallback(() => {
 		const data = {
@@ -56,6 +57,9 @@ const ConfirmationPage = () => {
 		e.preventDefault();
 		const shippingData = {address, receiverName, saveData};
 		console.log(shippingData);
+	};
+	const handleEditClick = () => {
+		navigate('/', {state: {order}});
 	};
 
 	return (
@@ -119,7 +123,10 @@ const ConfirmationPage = () => {
 					</div>
 				</form>
 			</div>
-			<h2 className="cafe-order-header">Ваш Заказ</h2>
+			<div>
+				<h2 className="cafe-order-header">Ваш Заказ</h2>
+				<button type="button" onClick={handleEditClick} className="edit-button">Редактировать заказ</button>
+			</div>
 			<div className="order-items">
 				{order?.map(item => (
 					<div key={item.id} className="order-item">
@@ -138,7 +145,6 @@ const ConfirmationPage = () => {
 			<div className="order-total">
 				<span>Общая стоимость: {order?.reduce((acc, item) => acc + item.price * item.count, 0)} ₸</span>
 			</div>
-
 		</div>
 	);
 };

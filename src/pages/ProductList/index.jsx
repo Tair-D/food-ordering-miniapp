@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './ProductList.css';
 import {useTelegram} from "../../hooks/useTelegram";
 import ProductItem from "../../components/ProductionItem/index.jsx";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {products} from "../utils.js";
 
 const getTotalPrice = (items = []) => {
@@ -12,10 +12,13 @@ const getTotalPrice = (items = []) => {
 };
 
 const ProductList = () => {
-	const [addedItems, setAddedItems] = useState([]);
 	const {tg, queryId} = useTelegram();
 	const navigate = useNavigate();
+	const location = useLocation();
+	const order = location.state?.order || [];
+	const [addedItems, setAddedItems] = useState(order ? order : []);
 
+	console.log("order", order);
 
 	const onAdd = (product, remove = false) => {
 		const alreadyAdded = addedItems.find(item => item.id === product.id);
