@@ -54,10 +54,6 @@ const ConfirmationPage = () => {
 
 
 	useEffect(() => {
-		tg.MainButton.setParams({
-			text: `Оформить заказ`
-		});
-
 		tg.onEvent('mainButtonClicked', onSendData);
 		return () => {
 			tg.offEvent('mainButtonClicked', onSendData);
@@ -66,6 +62,9 @@ const ConfirmationPage = () => {
 
 	useEffect(() => {
 		if (address && receiverName && shopName && phoneNumber) {
+			tg.MainButton.setParams({
+				text: `Оформить заказ`
+			});
 			tg.MainButton.show();
 		} else {
 			tg.MainButton.hide();
@@ -93,29 +92,11 @@ const ConfirmationPage = () => {
 		}
 	}, []);
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (saveData) {
-			const userData = {
-				address,
-				receiverName,
-				shopName,
-				phoneNumber,
-				saveData,
-			};
-			localStorage.setItem('userData', JSON.stringify(userData));
-		} else {
-			localStorage.removeItem('userData');
-		}
-		const shippingData = {address, receiverName, shopName, phoneNumber, saveData};
-		console.log(shippingData);
-	};
-
 	return (
 		<div className="confirmation-page">
 			<div className="container">
 				<h2 className="cafe-order-header">Информация о доставке</h2>
-				<form onSubmit={handleSubmit}>
+				<form>
 					<div className="shipping-info">
 						<div>
 							<label className="label">Ф.И.О Получателя:</label>
