@@ -32,7 +32,7 @@ const ConfirmationPage = () => {
 
 		const data = {
 			products: order.map(item => ({
-				name: item.title,
+				title: item.title,
 				quantity: item.count,
 				price: item.price
 			})),
