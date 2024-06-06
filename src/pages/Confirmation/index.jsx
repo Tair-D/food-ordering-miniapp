@@ -31,15 +31,18 @@ const ConfirmationPage = () => {
 		}
 
 		const data = {
-			products: order,
-			totalPrice: order?.reduce((acc, item) => acc + item.price * item.count, 0),
+			products: order.map(item => ({
+				name: item.title,
+				quantity: item.count,
+				price: item.price
+			})),
+			totalPrice: order.reduce((acc, item) => acc + item.price * item.count, 0),
 			queryId,
 			address,
 			receiverName,
 			shopName,
 			phoneNumber
 		};
-
 		fetch('https://food-delivery-bot-8fa24de3ce48.herokuapp.com/web-data', {
 			method: 'POST',
 			headers: {
@@ -107,7 +110,6 @@ const ConfirmationPage = () => {
 		const shippingData = {address, receiverName, shopName, phoneNumber, saveData};
 		console.log(shippingData);
 	};
-
 
 	return (
 		<div className="confirmation-page">
