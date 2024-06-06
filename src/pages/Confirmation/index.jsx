@@ -67,7 +67,7 @@ const ConfirmationPage = () => {
 		} else {
 			tg.MainButton.hide();
 		}
-	}, [address, receiverName, shopName, tg]);
+	}, [address, receiverName, shopName, phoneNumber, tg]);
 
 	const handleAddressChange = (e) => setAddress(e.target.value);
 	const handleReceiverNameChange = (e) => setReceiverName(e.target.value);
@@ -116,7 +116,7 @@ const ConfirmationPage = () => {
 				<form onSubmit={handleSubmit}>
 					<div className="shipping-info">
 						<div>
-							<label className="label">Фамилия Имя Получателя:</label>
+							<label className="label">Ф.И.О Получателя:</label>
 							<input
 								type="text"
 								value={receiverName}
@@ -159,20 +159,18 @@ const ConfirmationPage = () => {
 						</div>
 					</div>
 
-					<div className="checkbox-container">
+					<div className="checkbox-container" onClick={handleSaveDataToggle}>
 						<input
 							type="checkbox"
 							checked={saveData}
-							onChange={handleSaveDataToggle}
 							className="checkbox"
 						/>
-						<label className="label">Сохранить информацию для следующего раза</label>
+						<label className="label">Сохранить информацию для следующего заказа</label>
 					</div>
 				</form>
 			</div>
 			<div>
 				<h2 className="cafe-order-header">Ваш Заказ</h2>
-				<button type="button" onClick={handleEditClick} className="edit-button">Редактировать заказ</button>
 			</div>
 			<div className="order-items">
 				{order?.map(item => (
@@ -192,6 +190,7 @@ const ConfirmationPage = () => {
 			<div className="order-total">
 				<span>Общая стоимость: {order?.reduce((acc, item) => acc + item.price * item.count, 0)} ₸</span>
 			</div>
+			<button type="button" onClick={handleEditClick} className="edit-button">Редактировать заказ</button>
 		</div>
 	);
 };
