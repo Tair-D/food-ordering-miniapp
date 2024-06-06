@@ -54,6 +54,9 @@ const ConfirmationPage = () => {
 
 
 	useEffect(() => {
+		tg.MainButton.setParams({
+			text: `Оформить заказ`
+		});
 		tg.onEvent('mainButtonClicked', onSendData);
 		return () => {
 			tg.offEvent('mainButtonClicked', onSendData);
@@ -63,9 +66,6 @@ const ConfirmationPage = () => {
 
 	useEffect(() => {
 		if (address && receiverName && shopName && phoneNumber) {
-			tg.MainButton.setParams({
-				text: `Оформить заказ`
-			});
 			tg.MainButton.show();
 		} else {
 			tg.MainButton.hide();
