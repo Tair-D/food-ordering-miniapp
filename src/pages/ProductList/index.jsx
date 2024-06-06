@@ -52,6 +52,9 @@ const ProductList = () => {
 
 	useEffect(() => {
 		if (addedItems?.length > 0) {
+			tg.MainButton.setParams({
+				text: `К оформлению ${getTotalPrice(addedItems)} ₸`
+			});
 			tg.MainButton.show();
 		}
 	}, []);
