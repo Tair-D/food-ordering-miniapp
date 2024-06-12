@@ -76,7 +76,18 @@ const ConfirmationPage = () => {
 	const handleAddressChange = (e) => setAddress(e.target.value);
 	const handleReceiverNameChange = (e) => setReceiverName(e.target.value);
 	const handleShopNameChange = (e) => setShopName(e.target.value);
-	const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
+	const handlePhoneNumberChange = (e) => {
+		const value = e.target.value;
+		const regex = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+
+		if (regex.test(value)) {
+			setPhoneNumber(value);
+		} else {
+			// Handle invalid format if necessary
+		}
+	};
+
+
 	const handleSaveDataToggle = () => setSaveData(!saveData);
 
 	const handleEditClick = () => {
@@ -151,14 +162,16 @@ const ConfirmationPage = () => {
 							<label className="label">Номер телефона:</label>
 							<Cleave
 								value={phoneNumber}
-								onChange={(e) => setPhoneNumber(e.target.value)}
+								onChange={handlePhoneNumberChange}
 								className="input"
 								options={{
 									prefix: '+7',
-									delimiters: [' ', '(', ') ', '-', '-'],
+									delimiters: [' (', ') ', '-', '-'],
 									blocks: [2, 3, 3, 2, 2],
 									numericOnly: true
 								}}
+								inputMode="tel"
+								placeholder="+7 (___) ___-__-__"
 								required
 							/>
 						</div>
