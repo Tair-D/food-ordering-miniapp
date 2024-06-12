@@ -77,16 +77,8 @@ const ConfirmationPage = () => {
 	const handleAddressChange = (e) => setAddress(e.target.value);
 	const handleReceiverNameChange = (e) => setReceiverName(e.target.value);
 	const handleShopNameChange = (e) => setShopName(e.target.value);
-	const handlePhoneNumberChange = (e) => {
-		const value = e.target.value;
-		const regex = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
 
-		if (regex.test(value)) {
-			setPhoneNumber(value);
-		} else {
-			// Handle invalid format if necessary
-		}
-	};
+	const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
 
 
 	const handleSaveDataToggle = () => setSaveData(!saveData);
