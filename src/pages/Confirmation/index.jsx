@@ -66,7 +66,8 @@ const ConfirmationPage = () => {
 	}, [onSendData, tg]);
 
 	useEffect(() => {
-		if (address && receiverName && shopName && phoneNumber?.length === 10) {
+		console.log("phoneNumber?.length", phoneNumber?.length);
+		if (address && receiverName && shopName && phoneNumber?.length === 18) {
 			tg.MainButton.show();
 		} else {
 			tg.MainButton.hide();
