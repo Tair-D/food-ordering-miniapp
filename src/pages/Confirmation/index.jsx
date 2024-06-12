@@ -3,6 +3,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import './Confirmation.css';
 import {useLocation, useNavigate} from "react-router-dom";
 import '../ShippingInfo/ShippingInfo.css';
+import Cleave from 'cleave.js/react';
 
 const ConfirmationPage = () => {
 	const {tg, queryId} = useTelegram();
@@ -65,7 +66,7 @@ const ConfirmationPage = () => {
 	}, [onSendData, tg]);
 
 	useEffect(() => {
-		if (address && receiverName && shopName && phoneNumber) {
+		if (address && receiverName && shopName && phoneNumber?.length === 10) {
 			tg.MainButton.show();
 		} else {
 			tg.MainButton.hide();
@@ -148,16 +149,20 @@ const ConfirmationPage = () => {
 						</div>
 						<div>
 							<label className="label">Номер телефона:</label>
-							<input
-								type="tel"
+							<Cleave
 								value={phoneNumber}
-								onChange={handlePhoneNumberChange}
+								onChange={(e) => setPhoneNumber(e.target.value)}
 								className="input"
+								options={{
+									prefix: '+7',
+									delimiters: [' ', '(', ') ', '-', '-'],
+									blocks: [2, 3, 3, 2, 2],
+									numericOnly: true
+								}}
 								required
-								pattern="[0-9]{10}"
-								title="Введите валидный телефон номер"
 							/>
 						</div>
+
 					</div>
 
 					<div className="checkbox-container" onClick={handleSaveDataToggle}>
