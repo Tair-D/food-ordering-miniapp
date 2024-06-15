@@ -66,13 +66,13 @@ const ConfirmationPage = () => {
 	}, [onSendData, tg]);
 
 	useEffect(() => {
-		console.log("phoneNumber?.length", phoneNumber?.length);
-		if (address && receiverName && shopName && phoneNumber?.length === 18) {
+		if (address?.length > 0 && receiverName.length > 0 && shopName?.length > 0 && phoneNumber?.length === 18) {
 			tg.MainButton.show();
 		} else {
 			tg.MainButton.hide();
 		}
-	}, [address, receiverName, shopName, phoneNumber, tg]);
+	}, [address, receiverName, shopName, phoneNumber, saveData]);
+
 
 	const handleAddressChange = (e) => setAddress(e.target.value);
 	const handleReceiverNameChange = (e) => setReceiverName(e.target.value);
@@ -176,6 +176,7 @@ const ConfirmationPage = () => {
 							type="checkbox"
 							checked={saveData}
 							className="checkbox"
+							onChange={handleSaveDataToggle} // Added onChange handler
 						/>
 						<label className="label">Сохранить информацию для следующего заказа</label>
 					</div>
