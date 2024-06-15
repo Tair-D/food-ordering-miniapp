@@ -13,7 +13,6 @@ const ConfirmationPage = () => {
 	const [shopName, setShopName] = useState('');
 	const [phoneNumber, setPhoneNumber] = useState('');
 	const [saveData, setSaveData] = useState(false);
-	const [isButtonVisible, setIsButtonVisible] = useState(false);
 
 	const order = location.state?.order || [];
 	const navigate = useNavigate();
@@ -56,31 +55,27 @@ const ConfirmationPage = () => {
 
 
 	useEffect(() => {
-		tg.MainButton.setParams({
-			text: `Оформить заказ`
-		});
-		tg.onEvent('mainButtonClicked', onSendData);
-		return () => {
-			tg.offEvent('mainButtonClicked', onSendData);
-			tg.MainButton.hide();
-		};
+		if (address?.length > 0 && receiverName.length > 0 && shopName?.length > 0 && phoneNumber?.length === 18) {
+			tg.MainButton.setParams({
+				text: `Оформить заказ`
+			});
+			tg.onEvent('mainButtonClicked', onSendData);
+			return () => {
+				tg.offEvent('mainButtonClicked', onSendData);
+				tg.MainButton.hide();
+			};
+		}
 	}, [onSendData, tg]);
 
 	useEffect(() => {
-		const shouldShowButton = address?.length > 0 && receiverName.length > 0 && shopName?.length > 0 && phoneNumber?.length === 18;
-		if (shouldShowButton !== isButtonVisible) {
-			setIsButtonVisible(shouldShowButton);
-		}
-	}, [address, receiverName, shopName, phoneNumber, isButtonVisible]);
-
-	useEffect(() => {
-		if (isButtonVisible) {
+		console.log("phoneNumber?.length", phoneNumber?.length);
+		if (address?.length > 0 && receiverName.length > 0 && shopName?.length > 0 && phoneNumber?.length === 18) {
 			tg.MainButton.show();
 		} else {
+			console.log("asd");
 			tg.MainButton.hide();
 		}
-	}, [isButtonVisible, tg]);
-
+	}, [address, receiverName, shopName, phoneNumber, saveData]);
 
 	const handleAddressChange = (e) => setAddress(e.target.value);
 	const handleReceiverNameChange = (e) => setReceiverName(e.target.value);
@@ -184,7 +179,7 @@ const ConfirmationPage = () => {
 							type="checkbox"
 							checked={saveData}
 							className="checkbox"
-							onChange={handleSaveDataToggle}
+							onChange={handleSaveDataToggle} // Added onChange handler
 						/>
 						<label className="label">Сохранить информацию для следующего заказа</label>
 					</div>
