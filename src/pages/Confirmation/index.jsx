@@ -13,6 +13,7 @@ const ConfirmationPage = () => {
 	const [shopName, setShopName] = useState('');
 	const [phoneNumber, setPhoneNumber] = useState('');
 	const [saveData, setSaveData] = useState(false);
+	const [isButtonVisible, setIsButtonVisible] = useState(false);
 
 	const order = location.state?.order || [];
 	const navigate = useNavigate();
@@ -66,12 +67,19 @@ const ConfirmationPage = () => {
 	}, [onSendData, tg]);
 
 	useEffect(() => {
-		if (address?.length > 0 && receiverName.length > 0 && shopName?.length > 0 && phoneNumber?.length === 18) {
+		const shouldShowButton = address?.length > 0 && receiverName.length > 0 && shopName?.length > 0 && phoneNumber?.length === 18;
+		if (shouldShowButton !== isButtonVisible) {
+			setIsButtonVisible(shouldShowButton);
+		}
+	}, [address, receiverName, shopName, phoneNumber, isButtonVisible]);
+
+	useEffect(() => {
+		if (isButtonVisible) {
 			tg.MainButton.show();
 		} else {
 			tg.MainButton.hide();
 		}
-	}, [address, receiverName, shopName, phoneNumber, saveData]);
+	}, [isButtonVisible, tg]);
 
 
 	const handleAddressChange = (e) => setAddress(e.target.value);
@@ -176,7 +184,7 @@ const ConfirmationPage = () => {
 							type="checkbox"
 							checked={saveData}
 							className="checkbox"
-							onChange={handleSaveDataToggle} // Added onChange handler
+							onChange={handleSaveDataToggle}
 						/>
 						<label className="label">Сохранить информацию для следующего заказа</label>
 					</div>
