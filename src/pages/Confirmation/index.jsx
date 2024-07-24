@@ -43,7 +43,7 @@ const ConfirmationPage = () => {
 			shopName,
 			phoneNumber
 		};
-		fetch('https://food-delivery-bot-8fa24de3ce48.herokuapp.com/web-data', {
+		fetch('https://tg-bot-ordering-94bb1948ace1.herokuapp.com/web-data', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
