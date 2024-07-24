@@ -3,6 +3,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import './Confirmation.css';
 import {useLocation, useNavigate} from "react-router-dom";
 import '../ShippingInfo/ShippingInfo.css';
+import Cleave from 'cleave.js/react';
 
 const ConfirmationPage = () => {
 	const {tg, queryId} = useTelegram();
@@ -54,28 +55,35 @@ const ConfirmationPage = () => {
 
 
 	useEffect(() => {
-		tg.MainButton.setParams({
-			text: `Оформить заказ`
-		});
-		tg.onEvent('mainButtonClicked', onSendData);
-		return () => {
-			tg.offEvent('mainButtonClicked', onSendData);
-			tg.MainButton.hide();
-		};
+		if (address?.length > 0 && receiverName.length > 0 && shopName?.length > 0 && phoneNumber?.length === 18) {
+			tg.MainButton.setParams({
+				text: `Оформить заказ`
+			});
+			tg.onEvent('mainButtonClicked', onSendData);
+			return () => {
+				tg.offEvent('mainButtonClicked', onSendData);
+				tg.MainButton.hide();
+			};
+		}
 	}, [onSendData, tg]);
 
 	useEffect(() => {
-		if (address && receiverName && shopName && phoneNumber) {
+		console.log("phoneNumber?.length", phoneNumber?.length);
+		if (address?.length > 0 && receiverName.length > 0 && shopName?.length > 0 && phoneNumber?.length === 18) {
 			tg.MainButton.show();
 		} else {
+			console.log("asd");
 			tg.MainButton.hide();
 		}
-	}, [address, receiverName, shopName, phoneNumber, tg]);
+	}, [address, receiverName, shopName, phoneNumber, saveData]);
 
 	const handleAddressChange = (e) => setAddress(e.target.value);
 	const handleReceiverNameChange = (e) => setReceiverName(e.target.value);
 	const handleShopNameChange = (e) => setShopName(e.target.value);
+
 	const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
+
+
 	const handleSaveDataToggle = () => setSaveData(!saveData);
 
 	const handleEditClick = () => {
@@ -148,16 +156,22 @@ const ConfirmationPage = () => {
 						</div>
 						<div>
 							<label className="label">Номер телефона:</label>
-							<input
-								type="tel"
+							<Cleave
 								value={phoneNumber}
 								onChange={handlePhoneNumberChange}
 								className="input"
+								options={{
+									prefix: '+7',
+									delimiters: [' (', ') ', '-', '-'],
+									blocks: [2, 3, 3, 2, 2],
+									numericOnly: true
+								}}
+								inputMode="tel"
+								placeholder="+7 (___) ___-__-__"
 								required
-								pattern="[0-9]{10}"
-								title="Введите валидный телефон номер"
 							/>
 						</div>
+
 					</div>
 
 					<div className="checkbox-container" onClick={handleSaveDataToggle}>
@@ -165,6 +179,7 @@ const ConfirmationPage = () => {
 							type="checkbox"
 							checked={saveData}
 							className="checkbox"
+							onChange={handleSaveDataToggle} // Added onChange handler
 						/>
 						<label className="label">Сохранить информацию для следующего заказа</label>
 					</div>
